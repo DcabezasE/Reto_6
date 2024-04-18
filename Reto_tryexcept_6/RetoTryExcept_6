@@ -1,0 +1,88 @@
+# 1) Operaciones Básicas entre Dos Números:
+
+
+def operaciones_basicas(num1, num2, operador):
+    if operador == "+":
+        return num1 + num2
+    elif operador == "-":
+        return num1 - num2
+    elif operador == "*":
+        return num1 * num2
+    elif operador == "/":
+        return num1 / num2
+ 
+try:
+    resultado = operaciones_basicas(1, 0, "/")
+    print(f"Ejer#1 Resultado: {resultado}")
+except ZeroDivisionError:
+    print(f"Ejer#1 Error: no se puede dividir entre 0")
+except TypeError:
+    print(f"Ejer#1 Error: pusiste una palabra en vez de un numero")
+
+# 2  Validación de Palíndromos (sin usar slicing inverso):
+
+
+def es_palindromo(palabra):
+    palabra = palabra.lower().replace(" ", "")  
+    longitud = len(palabra)
+    for i in range(longitud // 2):
+        if palabra[i] != palabra[longitud - i - 1]:
+            return False
+    return True
+
+try:
+    Palabrainicial = (2)
+    palabra1 = es_palindromo(Palabrainicial)
+    print(f"Ejer#2 la palabra; {Palabrainicial}. es palindromo: {palabra1}") 
+
+except AttributeError:
+  print(f"Ejer#2 Error: {Palabrainicial} no es una palabra")
+
+# 3  Números Primos en una Lista:
+
+
+def es_primo(numero):
+    if numero < 2:
+        return False
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
+def primos_en_lista(lista):
+    return [num for num in lista if es_primo(num)]
+
+try:    
+    numeros = [2, "3", 4, 5, 6, 7, 8, 9, 10]
+    print(primos_en_lista(numeros)) 
+except TypeError:
+    print("Ejer#3 Error: un valor de la lista no numérico")
+
+
+# 4 Mayor Suma entre Elementos Consecutivos en una Lista:
+
+
+def mayor_suma_consecutiva(lista):
+    max_suma = float("-inf")
+    for i in range(len(lista) - 1):
+        suma_actual = lista[i] + lista[i + 1]
+        max_suma = max(max_suma, suma_actual)
+    return max_suma
+
+try:
+    numeros = [1, "3", 5, 7, 9]
+    print(mayor_suma_consecutiva(numeros))  
+except Exception as eNum:
+    print(f"Ejer#4 Error: {eNum}")
+
+# 5  Elementos con los Mismos Caracteres en una Lista de Strings:
+
+
+def mismos_caracteres(lista):
+    return [palabra for palabra in lista if len(set(palabra)) == len(palabra)]
+
+try:
+    palabras = ["amor", 2, "perro"]
+    print(mismos_caracteres(palabras))  
+except Exception as e:
+  print(f"Ejer#5 Error: {e}")
